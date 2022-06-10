@@ -36,8 +36,11 @@ metadata:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
+  #annotations:
+    #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   type: NodePort
+  #type: LoadBalancer
   ports:
     - port: 443
       targetPort: 8443
