@@ -1,5 +1,29 @@
 
 Kubernetes-Auth= https://github.com/keikoproj/aws-auth
+and https://github.com/YSureshN/Kubernetes-ingress-ALB-EKS/blob/master/Kubernetes-dashbard
+
+
+**others of Kubernets**
+
+https://www.replex.io/blog/how-to-install-access-and-add-heapster-metrics-to-the-kubernetes-dashboard
+
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+https://github.com/keikoproj/aws-auth.   (AWS Auth Configmap)
+
+kubectl edit -n kube-system configmap/aws-auth
+
+kubectl describe configmap -n kube-system aws-auth
+
+https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
+
+RBAC, Cluster Role Binding and Service Account
+
+https://github.com/RobinNagpal/kubernetes-tutorials/blob/master/06_tools/007_alb_ingress/01_eks/Makefile
+
+https://github.com/RobinNagpal/kubernetes-tutorials/tree/master/06_tools/007_alb_ingress/01_eks
+
+https://www.youtube.com/watch?v=S8U7A-eGdOs&t=582s
 
 Last Modified : Dec 28.2020
 ---------------------------------------------------------
