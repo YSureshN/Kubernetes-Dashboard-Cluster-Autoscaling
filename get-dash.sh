@@ -6,6 +6,7 @@
 # assign dashboard pods to any node in the cluster .
 # First version : Aug 2019
 # Last modified : Dec 2020
+# aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
 
 export DASH_NODE_NAME=`kubectl get pods  --all-namespaces -o wide | grep "kubernetes-dashboard-" | awk {'print $8'}`
 export DASH_NODE_IP=`grep $DASH_NODE_NAME /etc/hosts | awk {'print $1'}`
