@@ -1,0 +1,101 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: Amazon EKS - Node Group Autoscaling role
+
+Resources:
+  
+  #-----------------------------------------------------------------------------
+  # Amazon prod-EKSCluster Autoscaler Role
+  #-----------------------------------------------------------------------------
+  
+  TelematicsProdAmazonEKSClusterAutoscalerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Fn::Sub:
+          - '{
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRoleWithWebIdentity",
+                  "Condition": {
+                    "StringEquals": {
+                      "${OpenIdConnectIssuer}:aud": "sts.amazonaws.com",
+                      "${OpenIdConnectIssuer}:sub": "system:serviceaccount:kube-system:cluster-autoscaler"
+                    }
+                  },
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Federated": "arn:aws:iam::${AWS::AccountId}:oidc-provider/${OpenIdConnectIssuer}"
+                  }
+                }
+              ]
+            }'
+          #- { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt prod-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
+          - { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/D4F08DB1D370492C6B52599346BE518E" }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
+      Policies:
+        - PolicyName: prod-AmazonEKSClusterAutoscalerPolicy
+          PolicyDocument: 
+            Version: 2012-10-17
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                - autoscaling:SetDesiredCapacity
+                - autoscaling:TerminateInstanceInAutoScalingGroup
+                - autoscaling:DescribeAutoScalingInstances
+                - autoscaling:DescribeAutoScalingGroups
+                - ec2:DescribeLaunchTemplateVersions
+                - autoscaling:DescribeTags
+                - autoscaling:DescribeLaunchConfigurations
+                Resource: "*"
+      RoleName: prod-AmazonEKSClusterAutoscalerRole
+
+  #-----------------------------------------------------------------------------
+  # Amazon stage-EKSCluster Autoscaler Role
+  #-----------------------------------------------------------------------------
+  
+  TelematicsStageAmazonEKSClusterAutoscalerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Fn::Sub:
+          - '{
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRoleWithWebIdentity",
+                  "Condition": {
+                    "StringEquals": {
+                      "${OpenIdConnectIssuer}:aud": "sts.amazonaws.com",
+                      "${OpenIdConnectIssuer}:sub": "system:serviceaccount:kube-system:cluster-autoscaler"
+                    }
+                  },
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Federated": "arn:aws:iam::${AWS::AccountId}:oidc-provider/${OpenIdConnectIssuer}"
+                  }
+                }
+              ]
+            }'
+          #- { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt stg-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
+          - { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/CAC3FBC0EB4B5938604A9953A1B02347" }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
+      Policies:
+        - PolicyName: stage-AmazonEKSClusterAutoscalerPolicy
+          PolicyDocument: 
+            Version: 2012-10-17
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                - autoscaling:SetDesiredCapacity
+                - autoscaling:TerminateInstanceInAutoScalingGroup
+                - autoscaling:DescribeAutoScalingInstances
+                - autoscaling:DescribeAutoScalingGroups
+                - ec2:DescribeLaunchTemplateVersions
+                - autoscaling:DescribeTags
+                - autoscaling:DescribeLaunchConfigurations
+                Resource: "*"
+      RoleName: stage-AmazonEKSClusterAutoscalerRole
