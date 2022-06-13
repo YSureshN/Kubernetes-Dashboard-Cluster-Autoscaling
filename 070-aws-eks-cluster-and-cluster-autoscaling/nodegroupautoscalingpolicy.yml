@@ -31,27 +31,34 @@ Resources:
                 }
               ]
             }'
-          #- { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt prod-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
-          - { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/D4F08DB1D370492C6B52599346BE518E" }
+          - { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt prod-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
+          #- { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/D4F08DB1D370492C6B52599346BE518E" }
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
-      Policies:
-        - PolicyName: prod-AmazonEKSClusterAutoscalerPolicy
-          PolicyDocument: 
-            Version: 2012-10-17
-            Statement: 
-              - Effect: "Allow"
-                Action:
-                - autoscaling:SetDesiredCapacity
-                - autoscaling:TerminateInstanceInAutoScalingGroup
-                - autoscaling:DescribeAutoScalingInstances
-                - autoscaling:DescribeAutoScalingGroups
-                - ec2:DescribeLaunchTemplateVersions
-                - autoscaling:DescribeTags
-                - autoscaling:DescribeLaunchConfigurations
-                Resource: "*"
       RoleName: prod-AmazonEKSClusterAutoscalerRole
-
+  
+  AmazonEKSClusterAutoscalerPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties: 
+      Description: Managed Policy to codebuild Role
+      ManagedPolicyName: TelematicsCodebuildMicroServicebuildallPolicy
+      Path: /
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - autoscaling:SetDesiredCapacity
+              - autoscaling:TerminateInstanceInAutoScalingGroup
+              - autoscaling:DescribeAutoScalingInstances
+              - autoscaling:DescribeAutoScalingGroups
+              - ec2:DescribeLaunchTemplateVersions
+              - autoscaling:DescribeTags
+              - autoscaling:DescribeLaunchConfigurations
+            Resource: '*'
+      Roles: 
+        - !Ref TelematicsProdAmazonEKSClusterAutoscalerRole
+  
   #-----------------------------------------------------------------------------
   # Amazon stage-EKSCluster Autoscaler Role
   #-----------------------------------------------------------------------------
@@ -79,23 +86,31 @@ Resources:
                 }
               ]
             }'
-          #- { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt stg-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
-          - { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/CAC3FBC0EB4B5938604A9953A1B02347" }
+          - { OpenIdConnectIssuer: !Select [1, !Split ["//", !GetAtt stg-elevatetelematics-ms.OpenIdConnectIssuerUrl]] }
+          #- { OpenIdConnectIssuer: "oidc.eks.us-east-1.amazonaws.com/id/CAC3FBC0EB4B5938604A9953A1B02347" }
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
-      Policies:
-        - PolicyName: stage-AmazonEKSClusterAutoscalerPolicy
-          PolicyDocument: 
-            Version: 2012-10-17
-            Statement: 
-              - Effect: "Allow"
-                Action:
-                - autoscaling:SetDesiredCapacity
-                - autoscaling:TerminateInstanceInAutoScalingGroup
-                - autoscaling:DescribeAutoScalingInstances
-                - autoscaling:DescribeAutoScalingGroups
-                - ec2:DescribeLaunchTemplateVersions
-                - autoscaling:DescribeTags
-                - autoscaling:DescribeLaunchConfigurations
-                Resource: "*"
+      
       RoleName: stage-AmazonEKSClusterAutoscalerRole
+
+  AmazonstageEKSClusterAutoscalerPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties: 
+      Description: Managed Policy to codebuild Role
+      ManagedPolicyName: stage-AmazonEKSClusterAutoscalerPolicy
+      Path: /
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - autoscaling:SetDesiredCapacity
+              - autoscaling:TerminateInstanceInAutoScalingGroup
+              - autoscaling:DescribeAutoScalingInstances
+              - autoscaling:DescribeAutoScalingGroups
+              - ec2:DescribeLaunchTemplateVersions
+              - autoscaling:DescribeTags
+              - autoscaling:DescribeLaunchConfigurations
+            Resource: '*'
+      Roles: 
+        - !Ref TelematicsStageAmazonEKSClusterAutoscalerRole
