@@ -1,0 +1,55 @@
+
+# kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=release-1.0"
+
+# aws eks describe-cluster --name antonputra  --query "cluster.resourcesVpcConfig.vpcId" --output text
+
+# https://www.eksworkshop.com/beginner/190_efs/efs-csi-driver/
+
+# https://www.splunk.com/en_us/blog/platform/walkthrough-to-set-up-the-deep-learning-toolkit-for-splunk-with-amazon-eks.html
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: storage
+  
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: efs-sc
+provisioner: efs.csi.aws.com
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efs-pvc
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: EFS_VOLUME_ID
+    #volumeHandle: fs-xxxxx::fsap-xxxxxxxx
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-storage-claim
+  namespace: storage
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
+
+# kubectl apply -f efs-pvc.yaml
