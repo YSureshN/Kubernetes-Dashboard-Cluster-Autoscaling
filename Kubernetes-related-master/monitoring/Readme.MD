@@ -92,7 +92,7 @@ $POD_NAME=$(kubectl get pods --namespace monitoring -l "app=prometheus,component
 kubectl --namespace monitoring port-forward $POD_NAME 9090
 
 
-=================METOD TWO=========OIDC===AND====AWS====Prometheus===========
+=================METOD TWO=========OIDC===AND====AWS====Prometheus===========. Video Link https://www.youtube.com/watch?v=2qGDV0N14aY
 
 
 ##################### Create AWS EKS clsuster #######################################################################
