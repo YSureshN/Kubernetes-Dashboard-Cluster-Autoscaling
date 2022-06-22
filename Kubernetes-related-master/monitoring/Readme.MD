@@ -1,3 +1,17 @@
+===============================================
+
+AWS Opemserch for VPC Flow Logs
+
+Public = https://www.youtube.com/watch?v=trFW03zP7Uw
+
+Private= https://www.youtube.com/watch?v=trI2RzlU-iY 
+
+Blob= https://dheeraj3choudhary.com/stream-aws-cloudwatch-logs-to-amazon-opensearch-service-successor-to-amazon-elasticsearch-service
+
+=================
+
+
+
 #### Step 1: Configure EKS Cluster ####
 #The command creates an Amazon EKS Kubernetes cluster
 eksctl create cluster --region=us-east-1 --name=knote --zones us-east-1a,us-east-1b,us-east-1c,us-east-1d,us-east-1f 
