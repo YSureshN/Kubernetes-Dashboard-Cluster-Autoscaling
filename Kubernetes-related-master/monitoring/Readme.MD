@@ -92,8 +92,17 @@ $POD_NAME=$(kubectl get pods --namespace monitoring -l "app=prometheus,component
 kubectl --namespace monitoring port-forward $POD_NAME 9090
 
 
-=================METOD TWO=========OIDC===AND====AWS====Prometheus===========. Video Link https://www.youtube.com/watch?v=2qGDV0N14aY
+=================METOD TWO=========OIDC===AND====AWS====Prometheus===========. 
 
+Video Link https://www.youtube.com/watch?v=2qGDV0N14aY
+
+Email Aler Video= https://www.youtube.com/watch?v=g0gBKtcDOYc
+
+Teams Alert from Grafana= https://gregoiredayet.medium.com/monitoring-and-alerting-on-your-kubernetes-cluster-with-prometheus-and-grafana-55e4b427b22d
+
+Complete Video= https://www.youtube.com/watch?v=losQlALIsYY.     
+
+Blob-1= https://www.eksworkshop.com/intermediate/240_monitoring/
 
 ##################### Create AWS EKS clsuster #######################################################################
 
