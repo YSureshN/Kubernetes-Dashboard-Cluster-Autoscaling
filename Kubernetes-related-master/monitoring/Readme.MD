@@ -114,6 +114,8 @@ Email Aler Video= https://www.youtube.com/watch?v=g0gBKtcDOYc
 
 Teams Alert from Grafana= https://gregoiredayet.medium.com/monitoring-and-alerting-on-your-kubernetes-cluster-with-prometheus-and-grafana-55e4b427b22d
 
+Teams Alert Video= https://www.youtube.com/watch?v=U6sUFiBkdgk
+
 Complete Video= https://www.youtube.com/watch?v=losQlALIsYY.     
 
 Blob-1= https://www.eksworkshop.com/intermediate/240_monitoring/
