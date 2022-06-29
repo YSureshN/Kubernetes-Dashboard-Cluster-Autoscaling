@@ -62,3 +62,23 @@ change the clusterIp to Nodeport as changed in the "kubernetes-dashboard-deploym
 7. Open up a browser that allows self-signed certificate using webpages ( e.g. Firefox ) and use the node  IP:Nodeport combination to access the dashboard . e.g. https://<node4>:<node_port> will be https://10.10.0.4:32005
 
 8. In the login window use the token from previous step
+
+  
+  =====
+  
+  
+ How to add a liveness and readiness probe? From POM.XML through Maven Plugin
+
+  https://www.eclipse.org/jkube/docs/kubernetes-maven-plugin
+  
+  
+kubernetes-maven-plugin automatically adds Kubernetes liveness and readiness probes in generated Kubernetes manifests in presence of Spring Boot Actuator dependency.
+
+To add actuator to your project, add the following dependency:
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+</dependencies>
