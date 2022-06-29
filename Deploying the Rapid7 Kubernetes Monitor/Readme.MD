@@ -2,6 +2,8 @@ https://qualysapi.qg3.apps.qualys.com
 
 Video= https://www.youtube.com/watch?v=Gweo_UkShik&t=186s
 
+Instalation Preocess== https://docs.rapid7.com/insightvm/manage-kubernetes-integration/#before-you-begin
+
 
 Installation Instructions
 Run this in your Kubernetes terminal:
