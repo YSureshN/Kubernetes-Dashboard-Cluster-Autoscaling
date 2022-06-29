@@ -1,5 +1,8 @@
 https://qualysapi.qg3.apps.qualys.com
 
+Video= https://www.youtube.com/watch?v=Gweo_UkShik&t=186s
+
+
 Installation Instructions
 Run this in your Kubernetes terminal:
 kubectl create secret generic rapid7-monitor --from-literal=monitor-key="us:78c224ed-89da-43f0-88f4-9f95b42d7527" --namespace="default"
