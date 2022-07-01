@@ -82,3 +82,37 @@ To add actuator to your project, add the following dependency:
         <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 </dependencies>
+===================
+
+==========Devops-Related-all-Services-Detailed-Blobs========== 
+
+https://jhooq.com/terragrunt-guide/          (Terragrunt)
+
+
+https://jhooq.com/categories/terraform/      (Terraform)
+
+https://jhooq.com/categories/kubernetes/       (Kubernetes)
+
+https://jhooq.com/categories/docker/        (Docker)
+
+https://jhooq.com/categories/helm-chart/      (Helm-Chart)
+
+https://jhooq.com/categories/blogging/         (Blogging)
+
+https://jhooq.com/categories/spring-boot/      (Spring-Boot)
+
+https://jhooq.com/categories/quarkus/          (Quarkus)
+
+https://jhooq.com/categories/ssl/           (SSl)
+
+https://jhooq.com/categories/aws/        (AWS)
+
+https://jhooq.com/categories/github/      (Github)
+
+https://jhooq.com/categories/kubespray/    (Kubespray)
+
+https://jhooq.com/categories/prometheus-grafana/     (Prometheus-Grafana)
+
+https://jhooq.com/categories/vagrant/        (Vagrant)
+
+https://jhooq.com/categories/nginx/         (Nginx-in-Kubernetes)
