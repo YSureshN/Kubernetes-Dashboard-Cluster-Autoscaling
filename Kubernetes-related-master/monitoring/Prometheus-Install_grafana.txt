@@ -54,3 +54,11 @@ https://grafana.com/grafana/dashboards?dataSource=prometheus&direction=desc&orde
 helm uninstall prometheus --namespace prometheus
 helm uninstall grafana --namespace grafana
 © 2022
+
+
+------
+
+Email SMTP setup in grafana
+
+https://medium.com/@jeff.lee.1990710/config-smtp-server-for-grafana-in-prometheus-grafana-stack-f7066c32380b
+https://medium.com/@jeff.lee.1990710/how-to-install-prometheus-grafana-stack-to-monitor-your-kubernetes-clusters-9d1bf2496803
