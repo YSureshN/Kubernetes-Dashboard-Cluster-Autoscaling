@@ -64,3 +64,12 @@ https://medium.com/@jeff.lee.1990710/config-smtp-server-for-grafana-in-prometheu
 https://medium.com/@jeff.lee.1990710/how-to-install-prometheus-grafana-stack-to-monitor-your-kubernetes-clusters-9d1bf2496803
 
 https://stackoverflow.com/questions/59564994/how-to-config-email-alert-in-using-grafana-and-prometheus-operator
+
+
+===============Latest===Prometheus===Grafana=============
+
+https://devopscube.com/setup-prometheus-monitoring-on-kubernetes/
+
+https://devopscube.com/setup-grafana-kubernetes/
+
+===============================================
